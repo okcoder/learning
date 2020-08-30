@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        press enter to show:<input type="text" v-on:keyup="keyup1" /><br />
+        press enter to show:<input type="text" v-on:keyup.13="keyup2" /><br />
+        press enter to show:<input type="text" v-on:keyup.enter="keyup2" /><br />
+        press enter or space to show:<input type="text" v-on:keyup.enter.space="keyup2" /><br />
+        no event whith press shift<input type="text" v-on:keyup.shift="shift" /><br />
+        <button v-on:click.shift="shift">press shift and click this</button><br />
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+            },
+            methods: {
+                keyup1: function (event) {
+                    if (event.which == "13") {
+                        alert(event.target.value);
+                    }
+                },
+                keyup2: function (event) {
+                    alert(event.target.value);
+                },
+                shift: function (event) {
+                    alert("shift");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

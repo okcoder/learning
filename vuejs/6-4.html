@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>titles</h1>
+        <input type="text" v-model="searchInfo">
+        <div v-if="showSearching">searching</div>
+        <ul>
+            <li v-for="row in result">{{row}}</li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                searchInfo: "",
+                showSearching: false,
+                result: []
+            },
+            watch: {
+                searchInfo: function (val) {
+                    console.log(val);
+                    this.showSearching = true;
+                    /*NG
+                    setTimeout(function () {
+                        this.showSearching = false;
+                        this.result = ["a", "b", "c"];
+                    }, 500);
+                    */
+                    /*OK
+                    const self = this;
+                    setTimeout(function () {
+                        self.showSearching = false;
+                        self.result = ["a", "b", "c"];
+                    }, 500);
+                    */
+                    //OK
+                    setTimeout(() => {
+                        this.showSearching = false;
+                        this.result = ["a", "b", "c"];
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>reverse with out input</h1>
+        <ul>
+            <li v-for="(member,idx) in members">
+                {{idx+1}}: name:{{member.name}}@{{org}}, use {{member.lang}} <input type="text" />
+            </li>
+        </ul>
+        <h1>reverse with input</h1>
+        <ul>
+            <li v-for="(member,idx) in members" v-bind:key="member.name">
+                {{idx+1}}: name:{{member.name}}@{{org}}, use {{member.lang}} <input type="text" />
+            </li>
+        </ul>
+        <button v-on:click="add">add</button>
+        <button v-on:click="reverse">reverse</button>
+        <hr />
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                members: [{ name: "n1", lang: "en" },
+                { name: "n2", lang: "ja" },
+                { name: "n3", lang: "cn" }
+                ],
+                org: "vuejs"
+            },
+            methods: {
+                add: function () {
+                    this.members.push({ name: "n" + (this.members.length + 1), lang: "ja" });
+                },
+                reverse: function () {
+                    this.members.reverse();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

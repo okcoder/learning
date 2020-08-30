@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}<Br />
+        {{age*2}}<Br />
+        {{age<12?"children":"normal"}}<Br />
+        {{firstName + " " + lastName}}<Br />
+        {{fullName.split(" ")}}<Br />
+        {{fullName.split(" ")[0]}}<Br />
+        {{getFullName()}}<Br />
+        {{getFullNameWithArgs(firstName,lastName)}}<Br />
+        <a href="{{url}}">link NG</a><Br />
+        <a v-bind:href="url">link OK<a>
+                <div v-bind:title="title">hover me!!!</div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world!",
+                age: 16,
+                firstName: "San",
+                lastName: "Zhang",
+                fullName: "Zhang San",
+                url: "http://www.google.com",
+                title: "title text"
+            },
+            methods: {
+                getFullName: function () {
+                    return [this.firstName, this.lastName].join("-")
+                },
+                getFullNameWithArgs: (firstName, lastName) =>
+                    [firstName, lastName].join("+")
+            }
+        });
+    </script>
+</body>
+
+</html>

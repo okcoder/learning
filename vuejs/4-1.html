@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        change on input:{{value1}}<input type="text" v-bind:value="value1" v-on:input="input1" /><br />
+        change on input:{{value2}}<input type="text" v-model:value="value2" /><br />
+        change on lost focus:{{value3}}<input type="text" v-model:value.lazy="value3" /><br />
+        number->string:{{typeof value4}}<input type="text" v-model:value="value4" /><br />
+        number->number:{{typeof value5}}<input type="text" v-model:value.number="value5" /><br />
+        auto trim:{{value6}}<input type="text" v-model:value.trim="value6" /><br />
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                value1: "hello1",
+                value2: "hello2",
+                value3: "hello3",
+                value4: 43,
+                value5: 5,
+                value6: "hello6"
+            },
+            methods: {
+                input1: function (event) {
+                    this.value1 = event.target.value;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

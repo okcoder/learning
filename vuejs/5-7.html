@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="password" v-model="password">
+        <p v-if="length() > 8">length is grater than 8</p>
+        <p v-else-if="length() > 0">has some char</p>
+        <p v-else>has no char</p>
+
+        <ul>
+            <li v-for="s in subs">
+                {{s.name}}
+                <ul>
+                    <li v-for="item in s.sub">{{item}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                password: "passwd",
+                subs: [
+                    { name: "ui", sub: ["angular", "jQuery UI,", "Vue", "React"] },
+                    { name: "java", sub: ["Spring", "java ee,", "seasar2"] },
+                    { name: "cloud", sub: ["GCP", "Azure,", "AWS"] }
+                ]
+            },
+            methods: {
+                length: function () {
+                    return this.password.length;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

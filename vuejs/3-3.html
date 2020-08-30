@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-on:keyup="keyup1" />output:{{name1}}<br />
+        <input type="text" v-on:keyup.enter.space="keyup2" />output:{{name2}}<br />
+        <input type="text" v-on:keyup="name3 = $event.target.value" />output:{{name3}}<br />
+        <input type="text" v-on:keyup.enter.space="name4 = $event.target.value" />output:{{name4}}<br />
+        <form action="" v-on:submit.prevent>
+            <input type="submit" />
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name1: "hello",
+                name2: "hello",
+                name3: "hello",
+                name4: "hello"
+            },
+            methods: {
+                keyup1: function (event) {
+                    this.name1 = event.target.value;
+                },
+                keyup2: function (event) {
+                    this.name2 = event.target.value;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

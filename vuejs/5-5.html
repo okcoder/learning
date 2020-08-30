@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(val,idx) in value1">{{idx+1}}: {{val}}</li>
+        </ul>
+        <button v-on:click="change1">don't change value</button>
+        <hr />
+        <ul>
+            <li v-for="(val,idx) in value2">{{idx+1}}: {{val}}</li>
+        </ul>
+        <button v-on:click="change2">change value</button>
+        <hr />
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                value1: [1, 2, 3, 4, 5],
+                value2: [1, 2, 3, 4, 5]
+            }
+            , methods: {
+                change1: function () {
+                    this.value1[1] = 11;
+                },
+                change2: function () {
+                    Vue.set(this.value2, 1, 12);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

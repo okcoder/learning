@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>titles</h1>
+        <div>{{num}}</div>
+        <div>{{fullName}}</div>
+        <button v-on:click="num++">add</button>
+        <button v-on:click="firstName='HONG'">change</button>
+        <button v-on:click="fullName='H W'">change fullName</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                num: 0,
+                firstName: "Hong",
+                lastName: "Wang"
+            },
+            computed: {
+                fullName: {
+                    get: function () {
+                        alert("getFullName called.");
+                        return [this.firstName, this.lastName].join(" ");
+                    },
+                    set: function (val) {
+                        const values = val.split(" ");
+                        this.firstName = values[0];
+                        this.lastName = values[1];
+                    },
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

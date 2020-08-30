@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{html}}<br />
+        <div v-html="html"></div><br />
+        <div v-once>{{msg}}</div><br />
+        <button v-on:click="msg='abcd'">can not change msg to 123</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "message1",
+                html: "<hr/>html<hr/>"
+            },
+            methods: {
+            }
+        });
+    </script>
+</body>
+
+</html>

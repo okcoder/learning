@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div style="height: 50px;width: 200px;border-style: dashed;"
+            v-bind:style="{backgroundColor:'blue','border-color':'red'}"></div>
+        <hr />
+        <div style="height: 50px;width: 200px;border-style: dashed;"
+            v-bind:style="{backgroundColor:backgroundColor,'border-color':borderColor}"></div>
+        <button v-on:click="changeColor">change color</button>
+        <hr />
+        <div style="height: 50px;width: 200px;border-style: dashed;" v-bind:style="styles"></div>
+        <hr />
+        <div style="height: 50px;width: 200px;border-style: dashed;" v-bind:style="[style1,style2,{height:'100px'}]">
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                backgroundColor: "yellow",
+                borderColor: "green",
+                style1: {
+                    backgroundColor: '#ffcc00'
+                },
+                style2: {
+                    'border-color': 'blank'
+                }
+            },
+            computed: {
+                styles: function () {
+                    return {
+                        backgroundColor: this.backgroundColor,
+                        'border-color': this.borderColor
+                    };
+                }
+            },
+            methods: {
+                changeColor: function () {
+                    this.backgroundColor = "yellowred".replace(this.backgroundColor, "");
+                    this.borderColor = "yellowgreen".replace(this.borderColor, "");
+                }
+            },
+            filters: {
+            }
+        });
+    </script>
+</body>
+
+</html>

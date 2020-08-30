@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>titles</h1>
+        <ul>
+            <li v-for="title in titles">{{title}}</li>
+        </ul>
+        <hr />
+        <h1>titles</h1>
+        <ul>
+            <li v-for="(title,idx) in titles">{{idx+1}} : {{title}}</li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                titles: ["title1", "title2", "title3"],
+            }
+        });
+    </script>
+</body>
+
+</html>

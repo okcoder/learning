@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>titles</h1>
+        <ul>
+            <li v-for="row in fullName">{{row}}</li>
+        </ul>
+        <button v-on:click="add">add</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                persons: [
+                    { firstName: "Taro", lastName: "Nihon" },
+                    { firstName: "Jiro", lastName: "Tanaka" },
+                    { firstName: "Taro", lastName: "SUZIKI" }
+                ]
+            },
+            computed: {
+                fullName: function () {
+                    return this.persons.map(p => [p.firstName, p.lastName].join(" "));
+                }
+            },
+            methods: {
+                add: function () {
+                    this.persons.push({ firstName: "Hong", lastName: "WANG" })
+                }
+            },
+            watch: {
+                persons: function (val) {
+                    alert([val[val.length - 1].firstName, "added"].join(" "));
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

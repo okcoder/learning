@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="click1">button1</button><br>
+        <button v-on:click="click2">button2</button><br>
+        <button v-on:click="click3(31,$event)">button3</button><br>
+
+        <div v-on:click="click3(32,$event)">
+            div content<br>
+            <button v-on:click="click3(33,$event)">trigger parent event</button><br>
+        </div>
+        <div v-on:click="click3(34,$event)">
+            div content<br>
+            <button v-on:click.stop="click3(35,$event)">don't trigger parent event</button><br>
+        </div>
+        <a href="http://www.google.com">go to google</a><Br />
+        <a href="http://www.google.com" v-on:click.prevent>don't go to google</a><Br />
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+            },
+            methods: {
+                click1: function () {
+                    alert("clicked.");
+                },
+                click2: function (event) {
+                    alert(event);
+                },
+                click3: function (msg, event) {
+                    alert([msg, event]);
+                },
+                click4: function (event) {
+                    alert(event);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
